@@ -1,4 +1,4 @@
-package br.com.bluepoints.controller;
+package br.com.bluepoints.service;
 
 import br.com.bluepoints.model.Reciclagem;
 import br.com.bluepoints.repository.ReciclagemRepository;
