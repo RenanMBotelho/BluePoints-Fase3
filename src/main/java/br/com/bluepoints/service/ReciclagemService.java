@@ -1,7 +1,12 @@
 package br.com.bluepoints.service;
 
+import br.com.bluepoints.dto.ReciclagemCadastroDto;
+import br.com.bluepoints.dto.ReciclagemExibirDto;
+import br.com.bluepoints.exception.ReciclagemNaoEncontradaException;
+import br.com.bluepoints.exception.UsuarioSemReciclagemException;
 import br.com.bluepoints.model.Reciclagem;
 import br.com.bluepoints.repository.ReciclagemRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,18 +19,33 @@ public class ReciclagemService {
     @Autowired
     private ReciclagemRepository reciclagemRepository;
 
-    public Reciclagem gravar(Reciclagem reciclagem){
-        return reciclagemRepository.save(reciclagem);
+    public ReciclagemExibirDto gravar(ReciclagemCadastroDto reciclagemCadastroDto){
+
+        Reciclagem reciclagem = new Reciclagem();
+        BeanUtils.copyProperties(reciclagemCadastroDto, reciclagem);
+
+        return new ReciclagemExibirDto(reciclagemRepository.save(reciclagem));
     }
 
-    public Reciclagem buscarPorId(Long id){
+    public ReciclagemExibirDto buscarPorId(Long id){
 
         Optional<Reciclagem> reciclagemOptional = reciclagemRepository.findById(id);
 
         if(reciclagemOptional.isPresent()){
-            return reciclagemOptional.get();
+            return new ReciclagemExibirDto(reciclagemOptional.get());
         } else {
-            throw new RuntimeException("Reciclagem não encontrada!");
+            throw new ReciclagemNaoEncontradaException("Reciclagem não encontrada!");
+        }
+    }
+
+    public ReciclagemExibirDto buscarPorUsuario(Long usuario){
+
+        Optional<Reciclagem> reciclagemOptional = reciclagemRepository.findByUsuario(usuario);
+
+        if(reciclagemOptional.isPresent()){
+            return new ReciclagemExibirDto(reciclagemOptional.get());
+        } else {
+            throw new UsuarioSemReciclagemException("Usuário sem reciclagens!");
         }
     }
 
@@ -40,7 +60,7 @@ public class ReciclagemService {
         if(reciclagemOptional.isPresent()){
             reciclagemRepository.delete(reciclagemOptional.get());
         } else {
-            throw new RuntimeException("Reciclagem não encontrada!");
+            throw new ReciclagemNaoEncontradaException("Reciclagem não encontrada para exclusão!");
         }
     }
 
@@ -51,7 +71,7 @@ public class ReciclagemService {
         if(reciclagemOptional.isPresent()){
             return reciclagemRepository.save(reciclagem);
         } else {
-            throw new RuntimeException("Reciclagem não encontrada!");
+            throw new ReciclagemNaoEncontradaException("Reciclagem não encontrada para atualizar!");
         }
     }
 

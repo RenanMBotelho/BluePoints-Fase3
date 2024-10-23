@@ -1,18 +1,12 @@
 package br.com.bluepoints.model;
 
 import jakarta.persistence.*;
-import lombok.*;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity // identifica que a classe Reciclagem é uma entidade
 @Table(name = "T_HIST_RECICLAGEM") // define o nome da entidade no BD
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
 
 public class Reciclagem {
 
@@ -41,7 +35,6 @@ public class Reciclagem {
     @Column(name = "qtd_peso")
     private Double peso;
 
-/*
     public Reciclagem(){}
 
     public Reciclagem(Long id, Long usuario, String local, LocalDate data, Double peso) {
@@ -105,5 +98,4 @@ public class Reciclagem {
         return Objects.hash(id, usuario, local, data, peso);
     }
 
- */
 }

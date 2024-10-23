@@ -1,7 +1,10 @@
 package br.com.bluepoints.controller;
 
+import br.com.bluepoints.dto.ReciclagemCadastroDto;
+import br.com.bluepoints.dto.ReciclagemExibirDto;
 import br.com.bluepoints.model.Reciclagem;
 import br.com.bluepoints.service.ReciclagemService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +20,8 @@ public class ReciclagemController {
 
     @PostMapping("/reciclagem")
     @ResponseStatus(HttpStatus.CREATED)
-    public Reciclagem gravar(@RequestBody Reciclagem reciclagem){
-        return service.gravar(reciclagem);
+    public ReciclagemExibirDto gravar(@RequestBody @Valid ReciclagemCadastroDto reciclagemCadastroDto){
+        return service.gravar(reciclagemCadastroDto);
     }
 
     @GetMapping("/reciclagem")
@@ -27,14 +30,20 @@ public class ReciclagemController {
         return service.listarTodasReciclagens();
     }
 
-    @DeleteMapping("/reciclagem/{id}")
+    @GetMapping("/reciclagem/{usuario}")
     @ResponseStatus(HttpStatus.OK)
+    public ReciclagemExibirDto buscarPorUsuario(@PathVariable Long usuario){
+        return service.buscarPorUsuario(usuario);
+    }
+
+    @DeleteMapping("/reciclagem/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void excluir(@PathVariable Long id){
         service.excluir(id);
     }
 
-    @PutMapping("/reciclagem/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/reciclagem")
+    @ResponseStatus(HttpStatus.OK)
     public Reciclagem atualizar(@RequestBody Reciclagem reciclagem){
         return service.atualizar(reciclagem);
     }
