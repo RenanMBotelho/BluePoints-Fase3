@@ -8,6 +8,8 @@ import java.time.LocalDate;
 
 public record ReciclagemCadastroDto(
 
+        Long id,
+
         @NotNull(message = "O código do usuário é obrigatório!")
         Long usuario,
 
