@@ -31,11 +31,11 @@ public class ReciclagemController {
         return service.listarTodasReciclagens();
     }
 
-    @GetMapping("/reciclagem/{usuario}")
+    /*@GetMapping("/reciclagem/{usuario}")
     @ResponseStatus(HttpStatus.OK)
     public ReciclagemExibirDto buscarPorUsuario(@PathVariable Long usuario){
         return service.buscarPorUsuario(usuario);
-    }
+    }*/
 
     @DeleteMapping("/reciclagem/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

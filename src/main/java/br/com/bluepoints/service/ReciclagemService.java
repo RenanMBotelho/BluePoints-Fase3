@@ -38,7 +38,7 @@ public class ReciclagemService {
         }
     }
 
-    public ReciclagemExibirDto buscarPorUsuario(Long usuario){
+    /*public ReciclagemExibirDto buscarPorUsuario(Long usuario){
 
         Optional<Reciclagem> reciclagemOptional = reciclagemRepository.findByUsuario(usuario);
 
@@ -47,7 +47,7 @@ public class ReciclagemService {
         } else {
             throw new UsuarioSemReciclagemException("Usuário sem reciclagens!");
         }
-    }
+    }*/
 
     public List<Reciclagem> listarTodasReciclagens(){
         return reciclagemRepository.findAll();

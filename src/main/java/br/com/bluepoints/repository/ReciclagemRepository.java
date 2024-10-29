@@ -8,7 +8,6 @@ import java.util.Optional;
 
 public interface ReciclagemRepository extends JpaRepository<Reciclagem, Long> {
 
-    //@Query("SELECT r FROM T_HIST_RECICLAGEM r WHERE r.id = :id")
     public Optional<Reciclagem> findById(Long id);
 
     public Optional<Reciclagem> findByUsuario(Long usuario);
