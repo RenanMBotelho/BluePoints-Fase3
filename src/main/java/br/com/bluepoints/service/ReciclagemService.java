@@ -3,7 +3,6 @@ package br.com.bluepoints.service;
 import br.com.bluepoints.dto.ReciclagemCadastroDto;
 import br.com.bluepoints.dto.ReciclagemExibirDto;
 import br.com.bluepoints.exception.ReciclagemNaoEncontradaException;
-import br.com.bluepoints.exception.UsuarioSemReciclagemException;
 import br.com.bluepoints.model.Reciclagem;
 import br.com.bluepoints.repository.ReciclagemRepository;
 import org.springframework.beans.BeanUtils;
