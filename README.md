@@ -36,7 +36,7 @@ Este fonte realiza testes via api das funcionalidades de CRUD do aplicativo.
 
 Siga os passos abaixo para configurar o ambiente de desenvolvimento:
 
-1. Clone este repositório no ambiente de desenvolvimento (indicado o programa Intellij):
+1. Clone este repositório no ambiente de desenvolvimento (indicado o programa Intellij): https://github.com/RenanMBotelho/BluePoints-Fase3.git
 2. Caso não tenha, instale o programa Postman ou Insomnia.
 3. Pegue no diretório do programa o json de teste de api e importe no programa instalado.
 
